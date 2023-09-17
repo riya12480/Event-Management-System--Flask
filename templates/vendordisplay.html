@@ -1,0 +1,48 @@
+{% block content %}
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+ <!-- Main Content -->
+<br xmlns="http://www.w3.org/1999/html">
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="vendor" id="vendor">
+<h1 class="heading"><span>{{name[0]}}</span>{{name[1:]}}</h1>
+     <div class="content">
+    {{ wtf.quick_form(form, novalidate=True)}}
+     </div>
+    <div class="box-container">
+       {% for vendor in vendors %}
+ <div class="box">
+<img src="{{vendor.img_url}}" alt="" class="vendor-img">
+<div class="vendor-text">
+            <h2 class="details">
+              <i class="fa fa-user"></i> {{vendor.name}}
+            </h2>
+            <h2 class="details">
+                <i class="fa fa-envelope"></i> {{vendor.email}}
+            </h2>
+            <h2 class="details">
+              <i class="fas fa-map-marker-alt"></i> {{vendor.city}},{{vendor.state}}
+            </h2>
+             <h2 class="details">
+              <i class="fa fa-phone"></i> {{vendor.phone}}
+            </h2>
+            <h2 class="details">
+                       <i class="fa fa-coins"></i> {{vendor.price}}
+            </h2>
+
+    <a href="{{ url_for('description',vendor_id=vendor.id) }}" class="btn">View More</a>
+
+ </div>
+        </div>
+
+
+
+        {% endfor %}
+     </div>
+</section>
+{% include "footer.html" %}
+{% endblock %}

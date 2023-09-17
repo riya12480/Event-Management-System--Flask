@@ -1,0 +1,43 @@
+{% block content %}
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+ <!-- Main Content -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="vendor" id="vendor">
+<h1 class="heading"><span>D</span>ecorators</h1>
+     <div class="content">
+    {{ wtf.quick_form(form, novalidate=True)}}
+     </div>
+     <div class="box-container">
+       {% for decorator in decorators %}
+ <div class="box">
+<img src="{{decorator.img_url}}" alt="" class="vendor-img">
+<div class="vendor-text">
+            <h2 class="details">
+              <i class="fa fa-user"></i> {{decorator.name}}
+            </h2>
+            <h2 class="details">
+              <i class="fa fa-home"></i> {{decorator.city}},{{decorator.state}}
+            </h2>
+            <h2 class="details">
+                       <i class="fa fa-coins"></i> {{decorator.price}}
+            </h2>
+            <h2>
+                {{decorator.description}}
+            </h2>
+
+ </div>
+        </div>
+
+
+
+        {% endfor %}
+     </div>
+</section>
+{% include "footer.html" %}
+{% endblock %}

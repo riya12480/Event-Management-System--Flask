@@ -1,0 +1,35 @@
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!-- about section starts  -->
+
+<div class="content">
+<section class="about" id="about">
+
+<h1 class="heading"><span>Login</span> </h1>
+
+<div class="row">
+
+    <div class="content">
+        {% block content %}
+       {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+         <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+      <!-- This is where your WTForm will go -->
+          {{ wtf.quick_form(form, extra_classes='form-group', novalidate=True) }}
+        {% endblock %}
+    </div>
+
+</div>
+</section>
+    </div>
+
+{% include "footer.html" %}
+
+
+
+
